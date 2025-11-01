@@ -1,0 +1,143 @@
+/* src/styles/tailwind.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------
+   Professional Accounting Theme - HSL based
+---------------------------------------- */
+:root {
+  /* Core Backgrounds */
+  --background: 210 20% 98%;       /* soft light grayish blue */
+  --foreground: 215 15% 15%;       /* dark gray/black for text */
+
+  /* Card & Surface Colors */
+  --card: 0 0% 100%;               /* white cards */
+  --card-foreground: 215 15% 15%;  /* dark text on cards */
+
+  /* Primary / Secondary / Accent */
+  --primary: 221 83% 53%;           /* deep professional blue */
+  --primary-foreground: 0 0% 100%;  /* white text on buttons */
+  --secondary: 142 71% 45%;         /* calm teal */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 310 70% 43%;             /* subtle yellow/orange for highlights */
+  --accent-foreground: 0 0% 15%;
+
+  /* Status Colors */
+  --success: 158 64% 43%;           /* soft green */
+  --success-foreground: 0 0% 100%;
+  --warning: 45 100% 51%;            /* soft amber */
+  --warning-foreground: 0 0% 15%;
+  --destructive: 0 84% 60%;         /* muted red */
+  --destructive-foreground: 0 0% 100%;
+
+  /* UI Elements */
+  --muted: 210 15% 95%;             /* light gray for muted backgrounds */
+  --muted-foreground: 215 15% 35%;  /* soft gray text */
+  --border: 210 15% 85%;            /* subtle borders */
+  --input: 210 15% 90%;             /* light input background */
+  --ring: 210 90% 45%;              /* blue focus ring */
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 15% 15%;
+
+  /* Gradients (subtle) */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(210 90% 45%) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(195 80% 50%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(45 70% 70%) 100%);
+  --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 hsla(210, 15%, 15%, 0.05);
+  --shadow-md: 0 4px 6px -1px hsl(215 15% 15% / 0.1), 0 2px 4px -1px hsla(215, 18%, 39%, 0.06);
+  --shadow-lg: 0 10px 15px -3px hsl(215 15% 15% / 0.1), 0 4px 6px -2px hsl(215 15% 15% / 0.05);
+  --shadow-glow: 0 0 40px hsl(210 90% 45% / 0.2);
+
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar-background: 210 20% 95%;
+  --sidebar-foreground: 215 15% 15%;
+  --sidebar-primary: 210 90% 35%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 210 15% 90%;
+  --sidebar-accent-foreground: 215 15% 15%;
+  --sidebar-border: 210 15% 85%;
+  --sidebar-ring: 210 90% 45%;
+}
+
+/* Dark Mode */
+.dark {
+  --background: 215 15% 10%;       /* deep dark blue-gray */
+  --foreground: 0 0% 95%;          /* white text */
+  --card: 215 15% 15%;              /* dark card background */
+  --card-foreground: 0 0% 95%;
+  --primary: 210 90% 50%;
+  --primary-foreground: 0 0% 95%;
+  --secondary: 195 80% 50%;
+  --secondary-foreground: 0 0% 95%;
+  --accent: 45 70% 65%;
+  --accent-foreground: 0 0% 10%;
+  --success: 142 60% 45%;
+  --success-foreground: 0 0% 95%;
+  --warning: 35 85% 60%;
+  --warning-foreground: 0 0% 10%;
+  --destructive: 0 65% 55%;
+  --destructive-foreground: 0 0% 95%;
+  --muted: 215 15% 15%;
+  --muted-foreground: 215 15% 65%;
+  --border: 215 15% 20%;
+  --input: 215 15% 20%;
+  --ring: 210 90% 55%;
+  --sidebar-background: 215 15% 15%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 210 90% 40%;
+  --sidebar-primary-foreground: 0 0% 95%;
+  --sidebar-accent: 215 15% 20%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 215 15% 20%;
+  --sidebar-ring: 210 90% 55%;
+}
+
+/* ----------------------------------------
+   Global Styles
+---------------------------------------- */
+@layer base {
+  *, *::before, *::after {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-sans transition-colors duration-300;
+  }
+  *, *::before, *::after{--border-color: hsl(var(--border));}
+  a {
+    @apply text-[hsl(var(--primary))] hover:underline;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  input, textarea, select {
+    @apply bg-[hsl(var(--input))] text-[hsl(var(--foreground))] border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--ring))] transition;
+  }
+
+  .card {
+    @apply bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] rounded-lg shadow-md p-4;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--secondary))] text-[hsl(var(--primary-foreground))] rounded-md px-4 py-2 shadow hover:opacity-90 transition;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-[hsl(var(--secondary))] to-[hsl(var(--accent))] text-[hsl(var(--secondary-foreground))] rounded-md px-4 py-2 shadow hover:opacity-90 transition;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-[hsl(var(--accent))] to-[hsl(var(--primary))] text-[hsl(var(--accent-foreground))] rounded-md px-4 py-2 shadow hover:opacity-90 transition;
+  }
+}
